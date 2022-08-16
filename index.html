@@ -48,7 +48,7 @@
                 <h3 class="float-md-start mb-0">Cover</h3>
                 <nav class="nav nav-masthead justify-content-center float-md-end">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="/Page2.html">Features</a>
                     <a class="nav-link" href="#">Contact</a>
                 </nav>
             </div>
@@ -71,6 +71,43 @@
 
 
     <script src="main.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-app.js";
+        import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-messaging.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyAA9IMUqMy-iWlOm5a7GAD3dOBKWFX5dlk",
+            authDomain: "theclub-74cd2.firebaseapp.com",
+            projectId: "theclub-74cd2",
+            storageBucket: "theclub-74cd2.appspot.com",
+            messagingSenderId: "603209478368",
+            appId: "1:603209478368:web:b975409a57b26af05ca085",
+            measurementId: "G-DNV2YWRMWL"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        // Initialize Firebase Cloud Messaging and get a reference to the service
+        const messaging = getMessaging(app);
+
+        navigator.serviceWorker.ready.then(registration => {
+            getToken(messaging,
+                {
+                    vapidKey: "BO-9byBBJ47inQ6uu3VE7_kq1dtw5eoKaLuSVRuUKAerHB49ct-diLluG1y0MkB0ivpJOUX7N_-iRH2pLiysHSE",
+                    serviceWorkerRegistration: registration
+                })
+                .then(console.log);
+        })
+
+
+
+        console.log(messaging)
+    </script>
 </body>
 
 </html>
